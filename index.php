@@ -1,3 +1,28 @@
+<?php
+// salvo input utente in una variabile
+$password_lenght = $_GET['password'];
+// controllo se la variabile riceve correttamente il valore assegnato
+#var_dump($_GET);
+function generate_password($password_lenght) {
+    // variabili che contengono i caratteri da usare
+    $lower_case = 'abcdefghijklmnopqrstuvwxyz';
+    $upper_case = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $numbers = '123456789';
+    $symbols = '!@#$%^&*()-_=+[]{}|;:,.<>?';
+    $all_characters = $lower_case . $upper_case . $numbers . $symbols;
+    
+
+}
+
+?>
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +43,7 @@
     </header>
     <main>
       <div class="container">
+        <!-- form -->
         <form method="GET" action="index.php">
             <div>
                 <label for="password-length">Inserisci la lunghezza della tua password</label>
@@ -25,6 +51,7 @@
                 <button type="submit">Genera Password</button>
             </div>
         </form>
+        <!-- /form -->
       </div>
     </main>
 </body>
