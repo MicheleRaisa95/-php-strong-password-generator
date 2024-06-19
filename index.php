@@ -10,6 +10,22 @@ function generate_password($password_lenght) {
     $numbers = '123456789';
     $symbols = '!@#$%^&*()-_=+[]{}|;:,.<>?';
     $all_characters = $lower_case . $upper_case . $numbers . $symbols;
+    $all_characters_lenght = strlen($all_characters);
+    $password = '';
+
+    for ($i = 0; $i < $password_lenght; $i++) {
+        /* genero un numero  csuale per rendere la password randomica i numeri csuali vanno da 1 a 4 se il numero genrato e 1 la password avra una lettera minuscola se il nuemro generato e 2 la password avra una lettera maiuscola se il nuemro generato e 3 la password avra un numero e se il numero genrato e 4 avremo un simbolo*/
+        $random_choice = rand(1, 4);
+        if ($random_choice == 1) {
+            $password .= $lower_case[rand(0, strlen($lower_case) - 1)];
+        } elseif ($random_choice == 2) {
+            $password .= $upper_case[rand(0, strlen($upper_case) - 1)];
+        } elseif ($random_choice == 3) {
+            $password .= $numbers[rand(0, strlen($numbers) - 1)];
+        } else {
+             $password .= $symbols[rand(0, strlen($symbols) - 1)];
+        }
+    }
     
 
 }
