@@ -1,19 +1,18 @@
 <?php
 // salvo input utente in una variabile
-$password_lenght = $_GET['password'];
+$password_length = $_GET['password'];
 // controllo se la variabile riceve correttamente il valore assegnato
 #var_dump($_GET);
-function generate_password($password_lenght) {
+function generate_password($password_length) {
     // variabili che contengono i caratteri da usare
     $lower_case = 'abcdefghijklmnopqrstuvwxyz';
     $upper_case = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $numbers = '123456789';
     $symbols = '!@#$%^&*()-_=+[]{}|;:,.<>?';
-    $all_characters = $lower_case . $upper_case . $numbers . $symbols;
-    $all_characters_lenght = strlen($all_characters);
+   $symbols;
     $password = '';
 
-    for ($i = 0; $i < $password_lenght; $i++) {
+    for ($i = 0; $i < $password_length; $i++) {
         /* genero un numero  csuale per rendere la password randomica i numeri csuali vanno da 1 a 4 se il numero genrato e 1 la password avra una lettera minuscola se il nuemro generato e 2 la password avra una lettera maiuscola se il nuemro generato e 3 la password avra un numero e se il numero genrato e 4 avremo un simbolo*/
         $random_choice = rand(1, 4);
         if ($random_choice == 1) {
@@ -27,7 +26,7 @@ function generate_password($password_lenght) {
         }
     }
     
-
+         return $password;
 }
 
 ?>
@@ -63,11 +62,20 @@ function generate_password($password_lenght) {
         <form method="GET" action="index.php">
             <div>
                 <label for="password-length">Inserisci la lunghezza della tua password</label>
-                <input type="number" id="password" name="password" min="1" max="10">
+                <input type="number" id="password" name="password" min="1">
                 <button type="submit">Genera Password</button>
             </div>
         </form>
         <!-- /form -->
+         <?php
+         if (isset($_GET['password'])) {
+           $password_length = intval($_GET['password']);
+            if ($password_length > 0) {
+                $generated_password = generate_password($password_length);
+                echo "<p>La tua password: {$generated_password} </p>";
+            }
+         }
+         ?>
       </div>
     </main>
 </body>
